@@ -11,7 +11,7 @@
 <%
 
             String user = (String)session.getAttribute("studentid");          
-            String uname = (String)session.getAttribute("username");
+            String ffname = (String)session.getAttribute("facultyname");
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -21,59 +21,41 @@
 <meta name="author" content="Abdul Qadir Faridi & Pankaj Chaudhary" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Upcoming Events ExamShow</title>
-<link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico"/>
-<link href="assets/css/bootstrap.css" rel="stylesheet" type="text/css" />
- <link href="assets/css/bootstrap_1.css" rel="stylesheet" type="text/css" />
-<link href="assets/css/bootstrap-responsive.css" rel="stylesheet" type="text/css" />
-<link href="style.css" rel="stylesheet" type="text/css" />
 		<script type="text/javascript" src="assets/js/jquery.js"></script>
 		<script type="text/javascript" src="assets/js/jquery-1.7.1.min.js"></script>
-		<script type="text/javascript" src="assets/js/bootstrap-button.js"></script>
-                <script type="text/javascript" src="assets/js/jquery.validate.js"></script>
-		<script type="text/javascript" src="assets/js/jquery.validate.min1.js"></script>
-                <script type="text/javascript" src="assets/js/bootstrap-tab.js"></script>
-                <script type="text/javascript" src="assets/js/bootstrap-carousel.js"></script>
-                <script type="text/javascript" src="assets/js/bootstrap-dropdown.js"></script>
-                <script src="assets/js/bootstrap-collapse.js" type="text/javascript"></script>
 
-                <script src="assets/js/bootstrap.js" type="text/javascript"></script>
-                <script type="text/javascript" src="script2.js"></script>
-<style type="text/css">
-         .navbar-inner{
-			 background:#000;
-			 border-bottom:5px solid #007AF4;
-			 height:70px;
 
-			 }
-			.navbar-inner .brand{color:#FFF}
-
-</style>
 </head>
 
 
 <body>
   <script>
+
 window.location.hash="no-back-button";
 window.location.hash="Again-No-back-button";//again because google chrome don't insert first hash into history
 window.onhashchange=function(){window.location.hash="no-back-button";}
 </script>
+           <script type="text/javascript" src="assets/js/bootstrap-tab.js"></script>
+                <script src="assets/js/bootstrap-collapse.js" type="text/javascript"></script>
+
+                <script src="assets/js/bootstrap.js" type="text/javascript"></script>
 
                        <script src="assets/js/jquery-1.js" type="text/javascript"></script>
                 <script src="assets/js/jquery_1.js" type="text/javascript"></script>
                     <script src="assets/js/application_1.js" type="text/javascript"></script>
-                    
-<div class="navbar">
-<div class="navbar-inner">
-    <div class="container">
+                    <script type="text/javascript" src="assets/js/bootstrap-button.js"></script>
+                   <%
+                    if(user != null || ffname!=null )
+               {%>
 
-<a href="#" class="brand"> <img src="./assets/img/examshow.png" alt="Exam Show" width="100px" height="70px"/></a>
-<br/>
-<h1 class="brand" style="font-weight:bold;">Exam Show</h1>
-</div>
-</div>
-</div>
-
-
+        <%@include file="header1.jsp" %>
+        <%  }
+                else
+                {%>
+                 <%@ include file="header.jsp" %>
+                 <% }
+   %>
+                   
 <div class="container">
 <div class="row">
 <c:if test='${not empty param["Register"]}'>
@@ -171,7 +153,9 @@ window.onhashchange=function(){window.location.hash="no-back-button";}
 
 
 </div>
+ <br/><br/>
 </div>
+  <br/><br/>
  <%@include file="footer.jsp" %>
 </body>
 </html>

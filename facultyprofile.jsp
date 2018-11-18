@@ -49,8 +49,6 @@ window.onhashchange=function(){window.location.hash="no-back-button";}
 		<script type="text/javascript" src="assets/js/bootstrap-button.js"></script>
 		<script type="text/javascript" src="assets/js/jquery.validate.min.js"></script>
                 <script type="text/javascript" src="assets/js/bootstrap-tab.js"></script>
-                <script type="text/javascript" src="assets/js/bootstrap-carousel.js"></script>
-                <script type="text/javascript" src="assets/js/bootstrap-dropdown.js"></script>
                 <script type="text/javascript" src="assets/js/modal.js"></script>
 		<script type="text/javascript" src="script1.js"></script>
  <script type="text/javascript">
@@ -79,14 +77,14 @@ tinymce.init({
 <p class="pull-right" style="color:white;">
 <br />
 <%
-             String uname = (String)session.getAttribute("username");
+             String uname = (String)session.getAttribute("facultyname");
              if(uname==null)
                 {
                     response.sendRedirect("index.jsp");
                 }
             else
             {
-                   out.println("<b> Welcome , "+uname+"</b>");
+                   out.println("<b> Welcome , <a href='facultyprofile.jsp' style='color:white'>" +uname+ "</a></b>");
             }
 %>
 &nbsp;&nbsp;
@@ -156,6 +154,7 @@ active
 The effective use of "On-line Exam System", any Educational Institute or training centers can be use it to develop their strategy for putting the exams, and for getting better results in less time.
         </p>
             </div>
+    
  </div>
 
 <div id="profile" class="tab-pane fade in">
@@ -581,7 +580,6 @@ active
 
 
 
-
             </div>
 
 
@@ -589,10 +587,11 @@ active
 
 
             </div>
+
         </div>
-
+<br/><br/>
     </div>
-
+<br/><br/><br/><br/>
 
 
 

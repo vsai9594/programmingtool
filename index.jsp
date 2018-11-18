@@ -8,7 +8,8 @@
 <%
 
             String uname = (String)session.getAttribute("username");
-             if(uname!=null)
+             String fname = (String)session.getAttribute("facultyname");
+             if(uname!=null || fname!=null)
                 {
                     response.sendRedirect("home.jsp");
                 }
@@ -22,51 +23,30 @@
 <meta name="author" content="Abdul Qadir Faridi & Pankaj Chaudhary" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Exam Show</title>
-<link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico"/>
-<link href="assets/css/bootstrap.css" rel="stylesheet" type="text/css" />
-<link href="assets/css/bootstrap-responsive.css" rel="stylesheet" type="text/css" />
-<link href="style.css" rel="stylesheet" type="text/css" />
+
 		<script type="text/javascript" src="assets/js/jquery.js"></script>
 		<script type="text/javascript" src="assets/js/jquery-1.7.1.min.js"></script>
-		<script type="text/javascript" src="assets/js/bootstrap-button.js"></script>
-                <script type="text/javascript" src="assets/js/jquery.validate.js"></script>
+	        <script type="text/javascript" src="assets/js/jquery.validate.js"></script>
 		<script type="text/javascript" src="assets/js/jquery.validate.min1.js"></script>
-                <script type="text/javascript" src="assets/js/bootstrap-tab.js"></script>
-                <script type="text/javascript" src="assets/js/bootstrap-carousel.js"></script>
-                <script type="text/javascript" src="assets/js/bootstrap-dropdown.js"></script>
-                <script src="assets/js/bootstrap-collapse.js" type="text/javascript"></script>
-           
-                <script src="assets/js/bootstrap.js" type="text/javascript"></script>
-                <script type="text/javascript" src="script2.js"></script>
-<style type="text/css">
-         .navbar-inner{
-			 background:#000;
-			 border-bottom:5px solid #007AF4;
-			 height:70px;
+                
 
-			 }
-			.navbar-inner .brand{color:#FFF}
-
-</style>
 </head>
 
 
-<body>
+<body
+    <script type="text/javascript" src="assets/js/bootstrap-tab.js"></script>
+                <script type="text/javascript" src="assets/js/bootstrap-carousel.js"></script>
+                <script type="text/javascript" src="assets/js/bootstrap-dropdown.js"></script>
+                <script src="assets/js/bootstrap-collapse.js" type="text/javascript"></script>
+           <script type="text/javascript" src="assets/js/bootstrap-button.js"></script>
+                <script src="assets/js/bootstrap.js" type="text/javascript"></script>
+                <script type="text/javascript" src="script2.js"></script>
   <script>
 window.location.hash="no-back-button";
 window.location.hash="Again-No-back-button";//again because google chrome don't insert first hash into history
 window.onhashchange=function(){window.location.hash="no-back-button";}
 </script> 
-<div class="navbar">
-<div class="navbar-inner">
-    <div class="container">
-     
-<a href="#" class="brand"> <img src="./assets/img/examshow.png" alt="Exam Show" width="100px" height="70px"/></a>
-<br/>
-<h1 class="brand" style="font-weight:bold;">Exam Show</h1>
-</div>
-</div>
-</div>
+                <%@include file="header.jsp" %>
 
 
 <div class="container well">
@@ -118,11 +98,19 @@ window.onhashchange=function(){window.location.hash="no-back-button";}
  <div id="myTabContent" class="tab-content">
 <div id="student" class="tab-pane
 
-<c:if test='${!((not empty param["existsFaculty"])   || (not empty param["existsStudent"]) || (not empty param["RetryStudent"]))}'>
+<c:if test='${!((not empty param["existsFaculty"])  || (not empty param["FacultyVerify"]) ||  (not empty param["RetryFaculty"]) || (not empty param["RegisterFaculty"]) || (not empty param["existsStudent"]) || (not empty param["RetryStudent"]) || (not empty param["RegisterStudent"]))}'>
 active
 </c:if>
 
+<c:if test='${((not empty param["existsStudent"]) || (not empty param["RegisterStudent"]))}'>
+active
+</c:if>
+
+
                 ">
+       <c:if test='${not empty param["RegisterStudent"]}'>
+ <p style="color:green;font-weight:bold;">Student Registered Successfully.</p>
+</c:if>
 			<form action="studentregistration" id="contact-form" class="form-horizontal" method="post">
 
                                                     <div class="control-group">
@@ -173,17 +161,16 @@ active
                                                                               </div>
                                                                             </div>
                                                      </div>
-                                                    <div class="control-group">
-						      <label class="control-label" for="sem">Semester</label>
+                             <div class="control-group">
+						      <label class="control-label" for="institute">Institute</label>
 						      <div class="controls">
                                                           <div class="input-prepend">
-                                                        <span class="add-on"><i class="icon-user"></i></span>
-                                                        <input type="text" class="input-large" name="sem" id="sem" placeholder="User Name" maxlength="2" onkeyup="loadXMLDoc()"/>
+                                                        <span class="add-on"><i class="icon-home"></i></span>
+                                                        <input required type="text" class="input-large" name="institute" id="institute" placeholder="Institute Name"  onkeyup="loadXMLDoc()"/>
                                                               <span id="err"> </span>
                                                           </div>
                                                       </div>
 						    </div>
-
                                                     <div class="control-group">
                                                       <label class="control-label" for="email">Email Address</label>
                                                       <div class="controls">
@@ -203,59 +190,7 @@ active
 						    </div>
                                                     </div>
 
-			 <div class="control-group">
-						      <label class="control-label" for="dob">Date of Birth</label>
-						      <div class="controls">
-                                                <div class="input-prepend">
-                                                    <span class="add-on"><i class="icon-calendar"></i></span>
-						        <select style="width:67px" name="day">
-                                                                        <option>Days</option>
-                                                                        <%
-                                                                        for(int i=1;i<=31;i++)
-                                                                        {
-                                                                                out.println("<option>"+i+"</option>");
 
-                                                                        }
-                                                                        %>
-                                                                        </select>
-                                                                        <select style="width:75px" name="month">
-                                                                        <option>Months</option>
-                                                                        <%
-                                                                        for(int i=1;i<=12;i++)
-                                                                        {
-                                                                                out.println("<option>"+i+"</option>");
-                                                                        }
-                                                                        %>
-                                                                        </select>
-                                                                        <select style="width:75px" name="year">
-                                                                        <option>Years</option>
-                                                                        <%
-                                                                        for(int i=1960;i<2013;i++)
-                                                                        {
-                                                                        out.println("<option>"+i+"</option>");
-                                                                        }
-
-
-                                                                        %>
-                                                                        </select>
-
-                                                          </div>
-						    </div>
-                                                    </div>
-						   <div class="control-group">
-						      <label class="control-label" for="gender" >Gender</label>
-						      <div class="controls">
-                                                 
-                                                     
-    <input type="radio" name="sex" id="sex" value="male" />
-   Male
-
-
-    <input type="radio" name="sex" id="sex" value="female" />
-    Female
-                                      </div>
-
-                                                    </div>
                                                       <div class="control-group">
                                                       <label class="control-label"></label>
                                                       <div class="controls">
@@ -267,13 +202,17 @@ active
                                     </div>
 
                                               <div id="faculty" class="tab-pane
-  <c:if test='${not empty param["existsFaculty"]}'>
+  <c:if test='${(not empty param["existsFaculty"]) || (not empty param["RegisterFaculty"])}'>
 active
 </c:if>
 
 
 
                                                    ">
+
+       <c:if test='${not empty param["RegisterFaculty"]}'>
+ <p style="color:green;font-weight:bold;">Faculty Registered Successfully.</p>
+</c:if>
 						<form action="facultyregistration" id="contact-form1" class="form-horizontal" method="post">
 
                                                       <div class="control-group">
@@ -323,6 +262,16 @@ active
                                                                               </div>
                                                                             </div>
                                                      </div>
+                                            <div class="control-group">
+						      <label class="control-label" for="institute">Institute</label>
+						      <div class="controls">
+                                                          <div class="input-prepend">
+                                                        <span class="add-on"><i class="icon-home"></i></span>
+                                                        <input required type="text" class="input-large" name="institute" id="institute" placeholder="Institute Name"  onkeyup="loadXMLDoc()"/>
+                                                              <span id="err"> </span>
+                                                          </div>
+                                                      </div>
+						    </div>
                                                     <div class="control-group">
                                                       <label class="control-label" for="email">Email Address</label>
                                                       <div class="controls">
@@ -450,7 +399,7 @@ active
           </div>
 <div id="dropdown2" class="tab-pane 
 
-<c:if test='${not empty param["RetryFaculty"]}'>
+<c:if test='${(not empty param["RetryFaculty"]) || (not empty param["FacultyVerify"]) }'>
 active
 </c:if>
 
@@ -483,6 +432,11 @@ active
  <p style="color:red;font-weight:bold;">Wrong Username or Password.</p>
 
 </c:if>
+
+ <c:if test='${not empty param["FacultyVerify"]}'>
+ <p style="color:red;font-weight:bold;">You are not Verified Yet.</p>
+
+</c:if>
                                                       <button type="submit" class="btn btn-success" data-loading-text="Loading...">Login</button>
                                                                         </div>
                                                                                 </div>
@@ -496,7 +450,7 @@ active
      </div>
   
 </div>
-</div>
+</div><br/><br/><br/><br/>
  <%@include file="footer.jsp" %>
 </body>
 </html>

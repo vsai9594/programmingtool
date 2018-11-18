@@ -3,9 +3,8 @@
                       <div class="navbar-inner" style="background:#000;
 			 border-bottom:0px;">
            <center style="color:white"><a href="#myModal3"  data-toggle="modal" >Contact Us</a> || <a href="#myModal" data-toggle="modal">Feedback</a></center>
-        <center style="color: white">Copyright &copy; 2013 ExamShow, All rights reserved Disclaimer</center>
-        <center>The website is at its BETA phase. Please help us to improve the website by giving your feedback.</center>
-</div>
+        <center style="color: white">Copyright &copy; 2018 saivamsi, All rights reserved Disclaimer</center>
+        </div>
 </div>
        </div>
 
@@ -67,16 +66,8 @@
     <div align="center" class="modal-body lead" style='color:#808080 ;font-weight: bold;' >
    
         <p>
-            Abdul Qadir Faridi </p>
+            sai vamsi </p>
         <p>
-            Email : <a href="mailto:aqfaridi@gmail.com">aqfaridi@gmail.com</a>  </p>
-         <p>
-            Mobile : +91 7566062327  </p>
-         <br />
-        <p>    Pankaj Chaudhary </p>
-        <p>
-            Email : <a href="mailto:pankaj9310@gmail.com">pankaj9310@gmail.com</a> </p>
-        <p>
-            Mobile : +91 8989931101 </p>
+            Email : <a href="mailto:aqfaridi@gmail.com">vsai9594@gmail.com</a>  </p>
     </div>
 </div>

@@ -5,9 +5,10 @@
 --%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@page import="java.sql.*"%>
-<%@page import="java.io.PrintWriter"%>
-
+<%
+String fuser = (String)session.getAttribute("facultyname");
+String user = (String)session.getAttribute("studentid"); 
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -16,59 +17,29 @@
 <meta name="author" content="Abdul Qadir Faridi & Pankaj Chaudhary" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Home ExamShow</title>
-<link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico"/>
-<link href="assets/css/bootstrap.css" rel="stylesheet" type="text/css" />
-<link href="assets/css/bootstrap.css" rel="stylesheet" type="text/css" />
-<link href="assets/css/bootstrap-responsive.css" rel="stylesheet" type="text/css" />
 <link href="style.css" rel="stylesheet" type="text/css" />
 		<script type="text/javascript" src="assets/js/jquery.js"></script>
 		<script type="text/javascript" src="assets/js/jquery-1.7.1.min.js"></script>
-		<script type="text/javascript" src="assets/js/bootstrap-button.js"></script>
 		<script type="text/javascript" src="assets/js/jquery.validate.min.js"></script>
-                <script type="text/javascript" src="assets/js/bootstrap-tab.js"></script>
-                <script type="text/javascript" src="assets/js/bootstrap-carousel.js"></script>
-                <script type="text/javascript" src="assets/js/bootstrap-dropdown.js"></script>
-                <script type="text/javascript" src="assets/js/modal.js"></script>
-		<script type="text/javascript" src="script1.js"></script>
-<style type="text/css">
-         .navbar-inner{
-			 background:#000;
-			 border-bottom:5px solid #007AF4;
-			 height:70px;
-
-			 }
-			.navbar-inner .brand{color:#FFF}
-
-</style>
+               
 </head>
 
 
 <body>
+    <script type="text/javascript" src="assets/js/bootstrap-button.js"></script>
+    <script type="text/javascript" src="assets/js/bootstrap-tab.js"></script>
+    <script type="text/javascript" src="assets/js/modal.js"></script>
+             <%
+                    if(user != null ||fuser!=null)
+               {%>
 
-<div class="navbar">
-<div class="navbar-inner">
-    <div class="container">
-
-<a href="#" class="brand"> <img src="./assets/img/examshow.png" alt="Exam Show" width="100px" height="70px"/></a>
-<br/>
-<h1 class="brand" style="font-weight:bold;">Exam Show</h1>
-<form action="logout" method="post" class="pull-right">
-<button class="btn btn-primary" > logout </button>
-</form>
-<p class="pull-right" style="color:white;">
-<br />
-<%
-   String uname = session.getAttribute("username").toString();
-    out.println("<b> Welcome , "+uname+"</b>");
-%>
-&nbsp;&nbsp;
-
-</p>
-
-</div>
-</div>
-
-</div>
+        <%@include file="header1.jsp" %>
+        <%  }
+                else
+                {%>
+                 <%@ include file="header.jsp" %>
+                 <% }
+   %>
 <div class="container well">
     <div class="row">
         <div class="span2">
@@ -97,8 +68,9 @@ The effective use of "On-line Exam System", any Educational Institute or trainin
         </div>
         
     </div>
+<br/><br/>
 </div>
-
+<br/><br/><br/><br/>
  <%@include file="footer.jsp" %>
 </body>
 

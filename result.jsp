@@ -23,12 +23,8 @@
 <link href="style.css" rel="stylesheet" type="text/css" />
 		<script type="text/javascript" src="assets/js/jquery.js"></script>
 		<script type="text/javascript" src="assets/js/jquery-1.7.1.min.js"></script>
-		<script type="text/javascript" src="assets/js/bootstrap-button.js"></script>
 		<script type="text/javascript" src="assets/js/jquery.validate.min.js"></script>
-                <script type="text/javascript" src="assets/js/bootstrap-tab.js"></script>
-                <script type="text/javascript" src="assets/js/bootstrap-carousel.js"></script>
-                <script type="text/javascript" src="assets/js/bootstrap-dropdown.js"></script>
-		<script type="text/javascript" src="script1.js"></script>
+                
 <style type="text/css">
          .navbar-inner{
 			 background:#000;
@@ -43,7 +39,9 @@
 
 
 <body>
-
+    	<script type="text/javascript" src="assets/js/bootstrap-button.js"></script>
+<script type="text/javascript" src="assets/js/bootstrap-tab.js"></script>
+              	<script type="text/javascript" src="script1.js"></script>
 <div class="navbar">
 <div class="navbar-inner">
     <div class="container">
@@ -66,7 +64,7 @@
                 }
             else
             {
-                   out.println("<b> Welcome , "+uname+"</b>");
+                    out.println("<b> Welcome , <a href='studentprofile.jsp' style='color:white'>" +uname+ "</a></b>");
             }
 %>
 &nbsp;&nbsp;

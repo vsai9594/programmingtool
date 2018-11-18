@@ -23,13 +23,9 @@
 <link href="style.css" rel="stylesheet" type="text/css" />
 		<script type="text/javascript" src="assets/js/jquery.js"></script>
 		<script type="text/javascript" src="assets/js/jquery-1.7.1.min.js"></script>
-		<script type="text/javascript" src="assets/js/bootstrap-button.js"></script>
+		
 		<script type="text/javascript" src="assets/js/jquery.validate.min.js"></script>
-                <script type="text/javascript" src="assets/js/bootstrap-tab.js"></script>
-                <script type="text/javascript" src="assets/js/bootstrap-carousel.js"></script>
-                <script type="text/javascript" src="assets/js/bootstrap-dropdown.js"></script>
-		<script type="text/javascript" src="script1.js"></script>
-                <script type="text/javascript" src="countdown.js"></script>
+               
 <style type="text/css">
          .navbar-inner{
 			 background:#000;
@@ -44,6 +40,10 @@
 
 
 <body>
+    <script type="text/javascript" src="assets/js/bootstrap-button.js"></script>
+     <script type="text/javascript" src="assets/js/bootstrap-tab.js"></script>
+             	<script type="text/javascript" src="script1.js"></script>
+                <script type="text/javascript" src="countdown.js"></script>
   <script>
 window.location.hash="no-back-button";
 window.location.hash="Again-No-back-button";//again because google chrome don't insert first hash into history
@@ -325,21 +325,10 @@ window.onhashchange=function(){window.location.hash="no-back-button";}
                             }
                              else if(ts.compareTo(sdate)<0)
                              {
-                                out.println("<center><p style='font-weight:bold;color:red;'> Contest has not been started.</p></center><br/><br/>");
+                                out.println("<center><p style='font-weight:bold;color:red;'> Contest has not been started. starts at "+sdate+"</p></center><br/><br/>");
                                 long instart = (sdate.getTime() - ts.getTime())/1000;
 %>
-              <div class="span2 pull-right">
-                      <script type="application/javascript">
-                                                                var myCountdown2 = new Countdown({
-									time: <%=instart%>,
-									width:500,
-									height:80,
-									rangeHi:"year"	// <- no comma on last item!
-									});
-
-                      </script>
-
-                  </div>
+              
 
 
 

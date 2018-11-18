@@ -17,72 +17,43 @@
 <meta name="author" content="Abdul Qadir Faridi & Pankaj Chaudhary" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Student Profile ExamShow</title>
-<link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico"/>
-<link href="assets/css/bootstrap.css" rel="stylesheet" type="text/css" />
-<link href="assets/css/bootstrap.css" rel="stylesheet" type="text/css" />
-<link href="assets/css/bootstrap-responsive.css" rel="stylesheet" type="text/css" />
-<link href="style.css" rel="stylesheet" type="text/css" />
+
 		<script type="text/javascript" src="assets/js/jquery.js"></script>
 		<script type="text/javascript" src="assets/js/jquery-1.7.1.min.js"></script>
-		<script type="text/javascript" src="assets/js/bootstrap-button.js"></script>
-		<script type="text/javascript" src="assets/js/jquery.validate.min.js"></script>
-                <script type="text/javascript" src="assets/js/bootstrap-tab.js"></script>
-                <script type="text/javascript" src="assets/js/bootstrap-carousel.js"></script>
-                <script type="text/javascript" src="assets/js/bootstrap-dropdown.js"></script>
-                <script type="text/javascript" src="assets/js/modal.js"></script>
-		<script type="text/javascript" src="script1.js"></script>
-<style type="text/css">
-         .navbar-inner{
-			 background:#000;
-			 border-bottom:5px solid #007AF4;
-			 height:70px;
 
-			 }
-			.navbar-inner .brand{color:#FFF}
-
-</style>
 </head>
 
 
 <body>
+    <script type="text/javascript" src="assets/js/bootstrap-button.js"></script>
+		<script type="text/javascript" src="assets/js/jquery.validate.min.js"></script>
+                <script type="text/javascript" src="assets/js/bootstrap-tab.js"></script>
+                <script type="text/javascript" src="assets/js/modal.js"></script>
+		<script type="text/javascript" src="script1.js"></script>
+                     <script src="assets/js/jquery_1.js" type="text/javascript"></script>
+                    <script src="assets/js/application_1.js" type="text/javascript"></script>
+                    <script type="text/javascript" src="assets/js/bootstrap-button.js"></script>
   <script>
 window.location.hash="no-back-button";
 window.location.hash="Again-No-back-button";//again because google chrome don't insert first hash into history
 window.onhashchange=function(){window.location.hash="no-back-button";}
 </script>
     
-<div class="navbar">
-<div class="navbar-inner">
-    <div class="container">
-
-<a href="#" class="brand"> <img src="./assets/img/examshow.png" alt="Exam Show" width="100px" height="70px"/></a>
-<br/>
-<h1 class="brand" style="font-weight:bold;">Exam Show</h1>
-<form action="logout" method="post" class="pull-right">
-<button class="btn btn-primary" > logout </button>
-</form>
-<p class="pull-right" style="color:white;">
-<br />
 <%
-             String uname = (String)session.getAttribute("username");
-             if(uname==null)
+             String uname1 = (String)session.getAttribute("username");
+             if(uname1==null)
                 {
                     response.sendRedirect("index.jsp");
                 }
             else
-            {
-                   out.println("<b> Welcome , "+uname+"</b>");
-            }
+            {%>
+                   
+                   <%@include file="header1.jsp" %>
+                   <%
+                   }
    
 %>
-&nbsp;&nbsp;
 
-</p>
-
-</div>
-</div>
-
-</div>
 
 <div class="container well">
     <div class="row">
@@ -114,8 +85,7 @@ window.onhashchange=function(){window.location.hash="no-back-button";}
         </div>
    <div id="maincontent" class="span5 pull-right" >
             <div id="myTabContent" class="tab-content">
- <div id="home" class="tab-pane fade in
-
+ <div id="home" class="tab-pane
 <c:if test='${!(not empty param["error"]) && !(not empty param["Failed"]) && !(not empty param["alreadygiven"]) && !(not empty param["ExamActive"]) && !(not empty param["NotGiven"]) && !(not empty param["Unavailable"]) && !(not empty param["ErrorCode"])}'>
 active
 </c:if>
@@ -129,10 +99,12 @@ active
         </p>
         <p style="font-weight: bold;font-size:20px;color:#808080;line-height: 25px;"  >
 The effective use of "On-line Exam System", any Educational Institute or training centers can be use it to develop their strategy for putting the exams, and for getting better results in less time.
-        </p>
+        </p>  
             </div>
+    
  </div>
- <div id="profile" class="tab-pane fade in">
+              
+ <div id="profile" class="tab-pane">
 
     <h1 style='color:#3399FF;'> Personal Details : </h1>
  <%
@@ -193,28 +165,35 @@ The effective use of "On-line Exam System", any Educational Institute or trainin
 			%>
             </div>
 
-
-
-
-
-
                 <div id="viewsub" class="tab-pane">
 
                   <%
+                  int i=0;
                              
                                 try
                                 {
                                     String query="select * from subjects";
                                     rs=st.executeQuery(query);
-                                    out.println("<table class='table table-striped' style='background-color:white;'>");
+                                                                     %>
+                                        <table id="sortTableExample" class='table zebra-striped'>
+           <thead>
+            <tr>
+                <th class="header">S No.</th>
+                <th class="red header">Subject Name</th>
+                <th class="blue header">Subject Code</th>
+            </tr>
+            </thead>
+            <tbody>
+                                    <%
                                     while(rs.next())
-                                    {
+                                    { ++i;
                                         out.println("<tr>");
+                                        out.println("<td>" +i+"</td>");
                                         out.println("<td>"+rs.getString("subjectname")+"</td>");
                                         out.println("<td>"+rs.getString("subjectcode")+"</td>");
                                         out.println("</tr>");
                                     }
-                                    out.println("</table>");
+                                    out.println("</tbody></table>");
                                 }
                                 catch(Exception e){}
                   %>
@@ -269,16 +248,7 @@ active
                        
                    </div>
 
-
-
-
-
-
-
-
-
-
-                <div id="exam" class="tab-pane fade in
+                <div id="exam" class="tab-pane
 
 <c:if test='${(not empty param["error"]) || (not empty param["alreadygiven"]) || (not empty param["ExamActive"]) }'>
 active
@@ -404,8 +374,9 @@ active
 
             </div>
         </div>
-
+<br/><br/>
     </div>
+<br/><br/><br/><br/>
 
  <%@include file="footer.jsp" %>
 </body>
